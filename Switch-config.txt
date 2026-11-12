@@ -1,0 +1,53 @@
+
+! Small Office Network - Switch Configuration
+! Device: Cisco 2960
+
+enable
+configure terminal
+
+hostname S1
+
+! Create VLANs
+vlan 10
+ name ADMIN
+exit
+
+vlan 20
+ name HR
+exit
+
+vlan 30
+ name IT
+exit
+
+vlan 40
+ name FINANCE
+exit
+
+! Access port assignments
+interface FastEthernet0/1
+ switchport mode access
+ switchport access vlan 10
+exit
+
+interface FastEthernet0/2
+ switchport mode access
+ switchport access vlan 20
+exit
+
+interface FastEthernet0/3
+ switchport mode access
+ switchport access vlan 30
+exit
+
+interface FastEthernet0/4
+ switchport mode access
+ switchport access vlan 40
+exit
+
+! Trunk to router
+interface FastEthernet0/5
+ switchport mode trunk
+exit
+
+end
